@@ -10,28 +10,7 @@ import json
 from botocore.exceptions import ClientError
 import requests
 import decimal
-#from aws_requests_auth.aws_auth import AWSRequestsAuth
-# from elasticsearch import Elasticsearch, RequestsHttpConnection
-# import os
-
-# import json
-# import boto3
-# # from elasticsearch import Elasticsearch, RequestsHttpConnection
-# from opensearchpy import OpenSearch, RequestsHttpConnection
-# from requests_aws4auth import AWS4Auth
-
-# TABLE_NAME = 'yelp-restaurants'
-# SAMPLE_N = '5'
-# SEARCH_URL = 'https://search-restaurants-i6vpb7aoab5uqzmzg57xczr6fy.us-west-2.es.amazonaws.com'
-# credentials = boto3.Session().get_credentials()
-# awsauth = AWS4Auth(credentials.access_key, credentials.secret_key, 'us-west-2', 'es',session_token=credentials.token)
-
-#sqs = boto3.resource('sqs',region_name='us-west-2')
-#es = OpenSearch(SEARCH_URL, http_auth=awsauth, connection_class=RequestsHttpConnection)
-
 from boto3.dynamodb.conditions import Key, Attr
-# from botocore.vendored import requests
-# from botocore.exceptions import ClientError
 
 logger = logging.getLogger()
 logger.setLevel(logging.DEBUG)
@@ -40,13 +19,12 @@ logger.setLevel(logging.DEBUG)
 
 def getSQSMsg():
 
-    #session = boto3.Session(aws_access_key_id=AKIAZBNUL4HXXUHU5SZD, aws_secret_access_key='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')
+    
     session = boto3.Session('AKIAZBNUL4HXXUHU5SZD','rb1OGlUiR6qhja4HdImFCoIu5eBiPD+4zm6cSG6Z')
     sqs = session.client("sqs")
     SQS = boto3.client("sqs")
 
     
-    #SQS = boto3.client("sqs")
     url = 'https://sqs.us-east-1.amazonaws.com/621537911279/DiningChatbot'
     response = SQS.receive_message(
         QueueUrl=url, 
@@ -70,7 +48,7 @@ def getSQSMsg():
     SQS.delete_message(
             QueueUrl=url,
             ReceiptHandle=response['Messages'][0]['ReceiptHandle']
-            #ReceiptHandle=message['ReceiptHandle']
+            
         )
     logger.debug('Received and deleted message: %s' % response)
     return message
@@ -81,8 +59,8 @@ def lambda_handler(event, context):
         Query SQS to get the messages
         Store the relevant info, and pass it to the Elastic Search
     """
-    #print(event)
-    message = getSQSMsg() #data will be a json object
+    
+    message = getSQSMsg() 
     if message is None:
         logger.debug("No Cuisine or PhoneNum key found in message")
         return
@@ -102,7 +80,7 @@ def lambda_handler(event, context):
         Store the relevant info, create the message and sns the info
     """
     
- #   data = es.search(index="restaurants", body={"query": {"match": {'cuisine':cuisine}}})
+
     es_query = "https://search-cloud9223-v46yxmt7whhfkxkruwlzgnbizu.us-east-1.es.amazonaws.com/_search?q={cuisine}".format(
         cuisine=cuisine)
     master='restaurants'
@@ -117,10 +95,10 @@ def lambda_handler(event, context):
     except KeyError:
         logger.debug("Error extracting hits from ES response")
     
-    # extract bID from AWS ES
+ 
     ids = []
     for restaurants in esData:
-        #print(restaurants['_source']['Restaurant_id'])
+        
         ids.append(restaurants['_source']['Restaurant_id'])
         
     
