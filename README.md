@@ -90,6 +90,9 @@ We have support for Yelp-API with suggestions and real time chat.
                 *  Also confirm to the user that you received their request and
                     that you will notify them over SMS once you have the list of
                     restaurant suggestions.
+                    
+ ##Example Interaction
+ ![example](https://github.com/adsurvase/Dining-Concierge-Chatbot/blob/main/Images/Screen%20Shot%202022-03-03%20at%208.20.54%20PM.png)
 
 4. Integrate the Lex chatbot into your chat API
 
@@ -144,3 +147,5 @@ We have support for Yelp-API with suggestions and real time chat.
             ii. Modify the rest of the LF2 function if necessary to send the user text/email.
     * Set up a CloudWatch event trigger that runs every minute and invokes the Lambda function as a result:
         https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/RunLabdaSchedule.html. This automates the queue worker Lambda to poll                and process suggestion requests on its own.
+        
+
