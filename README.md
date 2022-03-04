@@ -91,7 +91,7 @@ We have support for Yelp-API with suggestions and real time chat.
                     that you will notify them over SMS once you have the list of
                     restaurant suggestions.
                     
- ##Example Interaction
+ 
  ![example](https://github.com/adsurvase/Dining-Concierge-Chatbot/blob/main/Images/Screen%20Shot%202022-03-03%20at%208.20.54%20PM.png)
 
 4. Integrate the Lex chatbot into your chat API
