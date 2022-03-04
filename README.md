@@ -149,3 +149,4 @@ We have support for Yelp-API with suggestions and real time chat.
         https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/RunLabdaSchedule.html. This automates the queue worker Lambda to poll                and process suggestion requests on its own.
         
 
+![output](https://github.com/adsurvase/Dining-Concierge-Chatbot/blob/main/Screenshot/WhatsApp%20Image%202022-03-03%20at%208.56.11%20PM.jpeg)
