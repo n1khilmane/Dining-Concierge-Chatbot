@@ -15,8 +15,8 @@ We have support for Yelp-API with suggestions and real time chat.
 9. Yelp API - To get suggestions for food
 10. AWS Congito - For authentication
 
+![diagram](https://github.com/adsurvase/Dining-Concierge-Chatbot/blob/main/Screenshot/Assignment%201%20architecture%20diagram.png)
 
-![example](Screenshot/Assignment 1 architecture diagram.png)
 
 
 ## Steps
