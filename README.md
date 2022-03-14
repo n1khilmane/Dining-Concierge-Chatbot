@@ -13,7 +13,6 @@ We have support for Yelp-API with suggestions and real time chat.
 7. Amazon SNS - to send restaurant suggestions to users through SMS
 8. Lambda - To send data from the frontend to API and API to Lex, validation, collecting restaurant data, sending suggestions using SNS.
 9. Yelp API - To get suggestions for food
-10. AWS Congito - For authentication
 
 ![diagram](https://github.com/adsurvase/Dining-Concierge-Chatbot/blob/main/Screenshot/Assignment%201%20architecture%20diagram.png)
 
